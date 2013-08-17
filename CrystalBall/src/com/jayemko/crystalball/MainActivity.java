@@ -1,5 +1,7 @@
 package com.jayemko.crystalball;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,7 +26,25 @@ public class MainActivity extends Activity {
       @Override
       public void onClick(View view) {
         // The button was clicked, so update the answer label with an answer
-        String answer = "Yes";
+        String answer = "";
+
+        // Randomly select one of three answers: Yes, No, or Maybe;
+        Random randomGenerator = new Random();
+        int randomNumber = randomGenerator.nextInt(3);
+
+        if (randomNumber == 0) {
+          answer = "Yes";
+        } else
+          if (randomNumber == 1) {
+            answer = "No";
+          } else
+            if (randomNumber == 2) {
+              answer = "Maybe";
+            } else {
+              answer = "Sorry, there was an error!";
+            }
+
+        // Update the label with our dynamic answer
         answerLabel.setText(answer);
 
       }
