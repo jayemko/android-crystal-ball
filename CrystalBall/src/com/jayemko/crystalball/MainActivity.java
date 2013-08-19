@@ -1,7 +1,5 @@
 package com.jayemko.crystalball;
 
-import java.util.Random;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+  private CrystalBall mCrystalBall = new CrystalBall();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +24,7 @@ public class MainActivity extends Activity {
 
       @Override
       public void onClick(View view) {
-        String[] answers = { "It is certain", "It is decidedly so", "All signs say YES",
-            "The stars are not aligned", "My reply is no", "It is doubtful",
-            "Better not tell you now", "Concentrate and ask again",
-            "Unable to answer now" };
-        // The button was clicked, so update the answer label with an answer
-        String answer = "";
-
-        // Randomly select one of three answers: Yes, No, or Maybe;
-        Random randomGenerator = new Random();
-        int randomNumber = randomGenerator.nextInt(answers.length);
-        answer = answers[randomNumber];
+        String answer = mCrystalBall.getAnAnswer();
         answerLabel.setText(answer);
 
       }
